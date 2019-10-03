@@ -20,6 +20,7 @@ int spocitejObvod(Trojuhelnik trojuhelnik)
 
 int main()
 {
+	//Just a Git colab testing
 	int pocetTrojuhelniku;
 	cout << "Zadejte pocet trojuhelniku: ";
 	cin >> pocetTrojuhelniku;
