@@ -40,6 +40,12 @@ int main()
 	std::cout << "First id of static object: " << ids[0] << std::endl;
 	std::cout << "Second id of static object: " << ids[1] << std::endl;
 	std::cout << "First moving object found: " << movingObject[0]->toString() << std::endl;
-	std::cout << "Moving object with angle: " + movingObjectWithAngle[0]->toString();
+	std::cout << "Moving object with angle: " + movingObjectWithAngle[0]->toString() << std::endl;
+	
+	std::cout << "Clearing memory" << std::endl;
+	delete[] ids;
+	delete[] movingObject;
+	delete[] movingObjectWithAngle;
+
 	std::cin.get();
 }

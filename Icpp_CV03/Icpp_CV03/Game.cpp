@@ -15,16 +15,16 @@ Game::~Game()
 {
 	delete[] objects;
 }
-bool Game::isInRange(Object* object, double xmin, double xmax, double ymin, double ymax)
+bool Game::isInRange(Object* object, double xmin, double xmax, double ymin, double ymax) const
 {
 	return object->GetX() > xmin && object->GetX() < xmax
 		&& object->GetY() > ymin&& object->GetY() < ymax;
 }
-bool Game::isInRange(Object* object, double x, double y, double r)
+bool Game::isInRange(Object* object, double x, double y, double r) const
 {
 	return pow(object->GetX() - x, 2) + pow(object->GetY() - y, 2) < pow(r, 2);
 }
-bool Game::isInRange(MovingObject* object, double x, double y, double r, double umin, double umax)
+bool Game::isInRange(MovingObject* object, double x, double y, double r, double umin, double umax) const
 {
 	return isInRange(object, x, y, r) && object->GetAngleRotation() > umin&& object->GetAngleRotation() < umax;
 }
@@ -37,7 +37,7 @@ void Game::AddObject(Object* o)
 
 	objects[OBJECT_COUNT++] = o;
 }
-int* Game::FindIdStaticObjects(double xmin, double xmax, double ymin, double ymax)
+int* Game::FindIdStaticObjects(double xmin, double xmax, double ymin, double ymax) const
 {
 	//Nenapadl mì lepší zpùsob jak to udìlat s polema.
 	int found = 0;
@@ -69,7 +69,7 @@ int* Game::FindIdStaticObjects(double xmin, double xmax, double ymin, double yma
 	return output;
 }
 
-MovingObject** Game::FindMovingObjectsInRange(double x, double y, double r)
+MovingObject** Game::FindMovingObjectsInRange(double x, double y, double r) const
 {
 	int found = 0;
 	for (int i = 0; i < OBJECT_COUNT; i++)
@@ -99,7 +99,7 @@ MovingObject** Game::FindMovingObjectsInRange(double x, double y, double r)
 
 	return output;
 }
-MovingObject** Game::FindMovingObjectsInRange(double x, double y, double r, double umin, double umax)
+MovingObject** Game::FindMovingObjectsInRange(double x, double y, double r, double umin, double umax) const
 {
 	int found = 0;
 	for (int i = 0; i < OBJECT_COUNT; i++)

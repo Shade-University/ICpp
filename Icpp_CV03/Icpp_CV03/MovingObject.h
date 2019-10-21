@@ -11,7 +11,7 @@ public:
 
 	void SetAngleRotation(double angleRotation) { this->angleRotation = angleRotation; }
 	double GetAngleRotation() const { return angleRotation; }
-	std::string toString() {
+	std::string toString() const {
 		return "Moving object, angleRotation: " + std::to_string(angleRotation);
 	}
 };
