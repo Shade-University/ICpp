@@ -5,7 +5,7 @@
 namespace Model {
 	using namespace Entity;
 
-	class PrvekSeznam
+	struct PrvekSeznam
 	{
 	public:
 		PrvekSeznam(Osoba o, PrvekSeznam* dalsi)
@@ -32,6 +32,7 @@ namespace Model {
 		std::string najdiTelefon(int id) const;
 	private:
 		PrvekSeznam* _zacatek;
+		PrvekSeznam* _konec;
 	};
 	
 }
