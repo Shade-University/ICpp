@@ -40,31 +40,24 @@ Person* load(std::string location)
 
 }
 
-void save_binary(std::string location, const Person* arr, int arrCount)
+void save_binary(std::string location, Person* arr, int arrCount)
 {
 	std::ofstream output(location, std::ios::out | std::ios::binary);
-	output.write((char*)&arr, sizeof(arr));
+	output.write((char*)arr, sizeof(Person) * arrCount);
 	output.close();
 }
 
-Person* load_binary(std::string location)
+Person* load_binary(std::string location, int arrCount)
 {
 	int countLines = 0;
 	std::ifstream input(location, std::ios::in | std::ios::binary);
 
-	std::string tempLine;
-	while (std::getline(input, tempLine))
-		countLines++;
-
-	input.clear();
-	input.seekg(0, std::ios::beg);
-
-	Person* arr = new Person[countLines];
-	input.read((char*)&arr, sizeof(arr));
+	Person* p = new Person[arrCount];
+	input.read((char*)p, sizeof(Person) * arrCount);
 
 	input.close();
 
-	return arr;
+	return p;
 
 }
 
@@ -90,13 +83,13 @@ int main()
 	std::cout << std::endl;
 
 	save_binary("data.bin", arr, ARR_SIZE);
-	Person* loadedData_binary = load_binary("data.bin");
+	Person* loadedData_binary = load_binary("data.bin", ARR_SIZE);
 	printArray(loadedData_binary, ARR_SIZE);
 
 
 	delete[] arr;
 	delete[] loadedData;
-	//delete[] loadedData_binary; loadedData_binary == arr	
+	//delete[] loadedData_binary; //loadedData_binary == arr	
 
 
 	std::cin.get();
